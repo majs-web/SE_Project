@@ -1,8 +1,5 @@
 
-/*
-I use the :root command to store the colors in a central place:
-*/
-
+/* Setup fonts, colors, basic margins and padding*/
 
 .poppins-semibold {
   font-family: "Poppins", sans-serif;
@@ -16,18 +13,12 @@ I use the :root command to store the colors in a central place:
   font-style: normal;
 }
 
-/* <weight>: Use a value from 100 to 900
- <uniquifier>: Use a unique and descriptive class name
-*/
-
-.inter-<uniquifier> {
+.inter-uniquifier> {
   font-family: "Inter", sans-serif;
   font-optical-sizing: auto;
   font-weight: <weight>;
   font-style: normal;
 }
-
-
 
 :root {
     --base-color: #D6F2E1;
@@ -38,12 +29,6 @@ I use the :root command to store the colors in a central place:
     --color-2: #B4E9C8;
     --color-3: #F6F3F9;
 }
-
-/*
-To ensure that the default browser spacing doesn't affect the elements I use,
-I set box-sizing to border-box to make surre padding or borders don't
-mess up the size calculations for any elements.
-*/
 
 * {
     margin: 0;
@@ -65,11 +50,23 @@ body {
     line-height: 1.6;
 }
 
+h2, h3 {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+}
+
+/* End basic setup fonts, colors, margins */
+
+/* Basic setup containers */
+
 .container {
     width: 90%;
     max-width: 1200px;
     margin: auto;
 }
+
+/*Header setup*/
 
 .header {
     margin: 2em auto;
@@ -85,67 +82,10 @@ body {
     align-items: center;
 }
 
-.site-footer {
-    margin: 2em auto;
-    width: min(75em, 100%);
-    background-color: var(--color-2);
-    padding: min(1em, 15%);
-    border-radius: 0.5em;
-}
-
-
 .logo {
     font-size: 1.2rem;
     font-weight: 700;
     margin: 0;
-}
-
-.logo-info-connect {
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-    justify-content: space-evenly;
-}
-
-.logo-and-info {
-    display: flex;
-    align-content: center;
-    flex-direction: column;
-}
-
-h2, h3 {
-    font-family: "Poppins", sans-serif;
-    font-weight: 600;
-    font-style: normal;
-}
-
-
-/*
-To ensure elements stay in the right place:
-- The nav element with the defined margin, 
-defines the top, right, bottom and left margins.
--> For left and right, auto so the element
-is centered horizontally on the page.
-- On the width property I use the min function, 
-meaning a nav bar can grow up to 1000px, but never 
-go wider than the screen size. 
--> makes it look good, both on large and small screens.
-*/
-
-.nav {
-    display: flex;
-    align-items: center;
-    justify-content: right;
-    margin: 1em auto 1em auto;
-    width: min(1000px, 100%);
-}
-
-.nav-footer {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 1em auto 1em auto;
-    width: min(1000px, 100%);
 }
 
 .logo {
@@ -161,6 +101,14 @@ go wider than the screen size.
     color: inherit;
 }
 
+.nav {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    margin: 1em auto 1em auto;
+    width: min(1000px, 100%);
+}
+
 .nav ul {
     display: flex;
     gap: 1.5rem;
@@ -170,6 +118,51 @@ go wider than the screen size.
     align-items: center;
     justify-items: right;
     flex-direction: row;
+}
+
+.nav a {
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+.nav a:hover {
+    text-decoration: underline;
+}
+
+.nav-footer a {
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+/* Footer setup*/
+
+.site-footer {
+    margin: 2em auto;
+    width: min(75em, 100%);
+    background-color: var(--color-2);
+    padding: min(1em, 15%);
+    border-radius: 0.5em;
+}
+
+.logo-info-connect {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.logo-and-info {
+    display: flex;
+    align-content: center;
+    flex-direction: column;
+}
+
+.nav-footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1em auto 1em auto;
+    width: min(1000px, 100%);
 }
 
 .nav-footer ul {
@@ -185,6 +178,10 @@ go wider than the screen size.
     font-size: .8rem;
     font-weight: 500;
     margin: 0;
+}
+
+.nav-footer a:hover {
+    text-decoration: underline;
 }
 
 .connect-footer {
@@ -211,86 +208,37 @@ go wider than the screen size.
     font-size: .7rem;
 }
 
-.nav a {
-    text-decoration: none;
-    color: var(--text-color);
-}
-
-.nav a:hover {
-    text-decoration: underline;
-}
-
-.nav-footer a {
-    text-decoration: none;
-    color: var(--text-color);
-}
-
-.nav-footer a:hover {
-    text-decoration: underline;
-}
-
+/* Index.html main setup */
 
 .hero {
     display: flex;
-    flex-direction: row-reverse;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    gap: 3em;
-    padding: 1em;
-    max-width: 1200px;
+    gap: 2em;
+    padding: 1.5em;
+    max-width: 100%;
     margin: 0 auto;
-    flex-wrap: wrap;
-}
-@media (max-width: 768px) {
-
-    .hero {
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        padding: 2em 1em;
-    }
-    .features {
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        padding: 2em 1em;
-    }
-    .privacy-statement {
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        padding: 2em 1em;
-    }
-    .about-us {
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        padding: 2em 1em;
-    }
+    text-align: center;
 }
 
 .hero img {
-    width: 400px;
-    height: 400px;
+    width: 80%;
+    max-width: 400px;
+    height: auto;
     object-fit: cover;
     border-radius: 1em;
 }
-
 
 .features {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 3em;
-    padding: 1em;
-    max-width: 1200px;
+    gap: 2em;
+    padding: 1.5em;
     margin: 0 auto;
-    flex-wrap: wrap;
+    text-align: center;
 }
 
 .features ul {
@@ -298,9 +246,38 @@ go wider than the screen size.
     flex-direction: column;
     align-items: flex-start;
     list-style-type: none;
-    flex-wrap: wrap;
-    gap: 2em;
+    gap: 1.5em;
+    padding: 0;
 }
+
+.contact-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 1.5em auto;
+    width: min(90%, 100%);
+    background-color: var(--primary-color);
+    padding: 1.5em;
+    border-radius: 0.5em;
+    color: var(--color-1);
+    text-align: center;
+}
+
+/* About us main setup */
+
+.about-us {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2em;
+    padding: 1em;
+    max-width: 100px;
+    margin: 0 auto;
+}
+
+/* Legal main setup */
 
 .privacy-statement {
     display: flex;
@@ -314,50 +291,23 @@ go wider than the screen size.
     flex-wrap: wrap;
 }
 
-.about-us {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 3em;
-    padding: 1em;
-    max-width: 1200px;
-    margin: 0 auto;
-    flex-wrap: wrap;
-}
-
-.contact-box {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    margin: 1em auto;
-    width: min(75em, 100%);
-    background-color: var(--primary-color);
-    padding: min(1em, 15%);
-    border-radius: 0.5em;
-    color: var(--color-1);
-}
+/* Contact box for about us and legal page */
 
 .contact-legal {
     display: flex;
-    justify-content: flex-start;
+    justify-content: column;
     align-items: center;
+    gap: 1em;
     margin: 1em auto;
-    width: min(75em, 100%);
+    width: min(90%, 100%);
     background-color: var(--primary-color);
-    padding: min(1em, 15%);
+    padding: 1.5em;
     border-radius: 0.5em;
     color: var(--color-1);
+    text-align: center
 }
 
-.contact-us {
-    margin: .5em auto 2em auto;
-    width: min(1000px, 100%);
-    color: #FFFFFF;
-    flex-direction: column;
-    display: flex;
-    gap: .5em;
-}
+/* CTA-buttons*/
 
 .cta-button {
     display: inline-block;
@@ -377,4 +327,88 @@ go wider than the screen size.
     padding: .75em 1.25em;
     border-radius: .5em;
     font-weight: 600;
+}
+
+/* Tablet (> 768px)*/
+
+@media (min-width: 768px) {
+
+    .hero {
+        flex-direction: row-reverse;
+        justify-content: space-between;
+        align-items: center;
+        text-align: left;
+        padding: 2em 3em;
+        max-width: 90%;
+    }
+    .hero img {
+        width: 350px;
+        height:350px;
+    }
+    .features ul {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 2.5em;
+        text-align: left;
+    }
+
+    .contact-box {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: left;
+        text-align: left;
+        width: min(80%, 60em);
+        padding: 2em 3em;
+    }
+
+    .privacy-statement {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 2em 1em;
+    }
+    .about-us {
+        flex-direction: row;
+        align-items: center;
+        text-align: left;
+    }
+    .about-us img {
+        width: 250px;
+        height: auto;
+    }
+}
+
+/* Desktop (>1200px) */
+
+@media (min-width: 1200px) {
+    .hero {
+        max-width: 1200px;
+        gap: 4em;
+        padding: 3em 5em;
+    }
+    .features {
+        max-width: 1200px;
+        gap: 3em;
+        padding: 3em 5em;
+    }
+
+    .contact-box {
+        width: min(75em, 100%);
+        padding: 3em 6em;
+    }
+    
+    .about-us {
+        max-width: 1200px;
+        gap: 4em;
+        padding: 2em 4em;
+    }
+    .contact-legal {
+        width: min(75em, 100%);
+        padding: 3em 6em;
+    }
+    .about-us p {
+        font-size: 1.1rem;
+    }
 }
