@@ -250,6 +250,27 @@ go wider than the screen size.
         text-align: center;
         padding: 2em 1em;
     }
+    .features {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 2em 1em;
+    }
+    .privacy-statement {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 2em 1em;
+    }
+    .about-us {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 2em 1em;
+    }
 }
 
 .hero img {
@@ -259,22 +280,8 @@ go wider than the screen size.
     border-radius: 1em;
 }
 
-.landing-page-head2 {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 1em;
-}
 
-
-.landing-page-head2 a:hover {
-    text-decoration: underline;
-}
-
-*/
-
-.how-it-works {
+.features {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -286,7 +293,7 @@ go wider than the screen size.
     flex-wrap: wrap;
 }
 
-.how-it-works ul {
+.features ul {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -295,21 +302,43 @@ go wider than the screen size.
     gap: 2em;
 }
 
-
-.text-container {
-    flex: 0 1 34em;
+.privacy-statement {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3em;
+    padding: 1em;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-wrap: wrap;
 }
 
-h1 {
-    font-size: 2.5rem;
-}
-
-.text-container p {
-    margin: .75em 0 1em 0;
-    font-size: 1.25rem;
+.about-us {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3em;
+    padding: 1em;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-wrap: wrap;
 }
 
 .contact-box {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 1em auto;
+    width: min(75em, 100%);
+    background-color: var(--primary-color);
+    padding: min(1em, 15%);
+    border-radius: 0.5em;
+    color: var(--color-1);
+}
+
+.contact-legal {
     display: flex;
     justify-content: flex-start;
     align-items: center;
