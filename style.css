@@ -1,12 +1,246 @@
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    margin: 0;
-    padding: 0;
+
+/*
+I use the :root command to store the colors in a central place:
+*/
+
+
+.poppins-semibold {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-style: normal;
 }
 
-header, footer {
-    background-color: #333;
-    color: white;
-    text-align: center;
-    padding: 1em;
+.poppins-bold {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-style: normal;
 }
+
+/* <weight>: Use a value from 100 to 900
+ <uniquifier>: Use a unique and descriptive class name
+*/
+
+.inter-<uniquifier> {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+}
+
+
+
+:root {
+    --base-color: #D6F2E1;
+    --text-color: #000000;
+    --primary-color: #0C7033;
+    --secondary-color: #EFFFF5;
+    --color-1: #FFFFFF;
+    --color-2: #f3f7f9;
+    --color-3: #F6F3F9;
+}
+
+/*
+To ensure that the default browser spacing doesn't affect the elements I use,
+I set box-sizing to border-box to make surre padding or borders don't
+mess up the size calculations for any elements.
+*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: <weight>;
+    font-style: normal;
+    color: car(--text-color);
+}
+
+body {
+    padding: 1em;
+    background-color: var(--base-color);
+}
+
+h1, h2, h3 {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+}
+
+/*
+To ensure elements stay in the right place:
+- The nav element with the defined margin, 
+defines the top, right, bottom and left margins.
+-> For left and right, auto so the element
+is centered horizontally on the page.
+- On the width property I use the min function, 
+meaning a nav bar can grow up to 1000px, but never 
+go wider than the screen size. 
+-> makes it look good, both on large and small screens.
+*/
+
+nav {
+    margin: 1em auto 1em auto;
+    width: min(1000px, 100%);
+}
+
+nav ul {
+    display: flex;
+    align-items: center;
+    list-style-type: none;
+    gap: 2em;
+}
+
+nav li:first-child {
+    margin-right: auto;
+    font-family: poppins;
+    font-weight: bold;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+.header {
+    margin: 2em auto;
+    width: min(75em, 100%);
+    background-color: var(--color-1);
+    padding: min(1em, 15%);
+    border-radius: 0.5em;
+}
+
+.landing-page-head {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+    gap: 3em;
+    padding: 1em;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+
+
+@media (max-width: 768px) {
+    .landing-page-head {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 2em 1em;
+    }
+    .landing-page-head2 {
+        align-items: center;
+        text-align: center;
+    }
+}
+
+.landing-page-head img {
+    width: 400px;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 1em;
+}
+
+.landing-page-head2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 1em;
+}
+
+
+.landing-page-head2 a:hover {
+    text-decoration: underline;
+}
+
+.how-it-works {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3em;
+    padding: 1em;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+
+.how-it-works ul {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    list-style-type: none;
+    flex-wrap: wrap;
+    gap: 2em;
+}
+
+
+.text-container {
+    flex: 0 1 34em;
+}
+
+h1 {
+    font-size: 2.5rem;
+}
+
+.text-container p {
+    margin: .75em 0 1em 0;
+    font-size: 1.25rem;
+}
+
+.box {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 1em auto;
+    width: min(75em, 100%);
+    background-color: var(--primary-color);
+    padding: min(1em, 15%);
+    border-radius: 0.5em;
+}
+
+
+
+.contact-us {
+    margin: .5em auto 2em auto;
+    width: min(1000px, 100%);
+    color: #FFFFFF;
+    flex-direction: column;
+    display: flex;
+    gap: .5em;
+}
+
+
+
+.cta-button {
+    display: inline-block;
+    text-decoration: none;
+    color: white;
+    background-color: var(--primary-color);
+    padding: .75em 1.25em;
+    border-radius: .5em;
+    font-weight: 600;
+}
+
+.secondary {
+    display: inline-block;
+    text-decoration: none;
+    color: var(--text-color);
+    background-color: var(--secondary-color);
+    padding: .75em 1.25em;
+    border-radius: .5em;
+    font-weight: 600;
+}
+
+
