@@ -1,27 +1,30 @@
 import express from 'express'
 import { logger } from '../middlewares/logger.js'
+import path from 'path';
+import { fileURLToPath} from 'url'
 
 const app = express()
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 const PORT = 3000
 
+app.use(express.static(path.join(__dirname, '../public')));
+app.use(express.urlencoded({ extended: true }))
 app.use(logger)
 
-const name = ''
-
-app.get('/maths', (request, response) => {
-    const num1 = 10
-    const num2 = 20
-    const num3 = 15
-    const average = (num1 + num2 + num3) / 3
-    response.send(`The average of ${num1}, ${num2}, and ${num3} is ${average}!`)
+app.post('./public/about', (request, response) => {
+    console.log('Contact form submission: ', request.body)
+    response.send("Thank you for reaching out - we'll get back to you soon.")
 })
 
-app.post('/about', (request, response) => {
-    response.send('Reach out if you have a question.')
+app.get('/', (request, response) => {
+    response.send('Welcome to Bondeappen!')
 })
 
-app.get('/legal', (request, response) => {
-    response.send(`Hi, ${name}! Welcome to this page. Today's dinner: ${favFood}`)
+app.get('/about', (request, response) => {
+    console.log(request.query)
+
+    response.send('Here you soon find information about us!')
 })
 
 app.listen(PORT, () => {
