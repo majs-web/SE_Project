@@ -4,6 +4,7 @@ import { logger } from './middlewares/logger.js'
 const app = express()
 const PORT = 3000
 
+app.set('view engine', 'ejs')
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }))
 app.use(logger)
