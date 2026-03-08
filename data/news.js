@@ -1,7 +1,3 @@
-/* export const news = [
-    { name: 'Article 1', slug: 'article-1' },
-    { name: 'Article 2', slug: 'article-2'}
-] */
 
 export const newsArticles = [
 {
