@@ -23,6 +23,7 @@
                 <ul>
                     <li><a href="about.html">About us</a></li>
                     <li><a href="legal.html">Legal</a></li>
+                    <li><a href="/news">News</a></li>
                     <li><a href="#">Login</a></li>
                     <a href="#" class="cta-button">Sign up</a>
                 </ul>
@@ -49,6 +50,13 @@
             <button>Send</button>
         </form>
 
+        <script>
+            const params = new URLSearchParams(window.location.search);
+            if (params.get('success')) {
+                document.getElementById('success-message').textContent = "Thanks for reaching out - we'll get back to you soon!"
+            }
+        </script>
+
 
 <!--         <section class="contact-legal">
             <div class="container">
@@ -72,6 +80,7 @@
                     <li><a href="index.html">Home</a></li>
                     <li><a href="about.html">About us</a></li>
                     <li><a href="legal.html">Legal</a></li>
+                    <li><a href="/news">News</a></li>
                     <li><a href="#">Login</a></li>
                     </ul>
                 </nav>
