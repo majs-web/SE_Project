@@ -7,8 +7,17 @@
     </header>
 
     <main>
-        <p>Welcome to Bondeappen!</p>
-        <p>We currently have <%= numberOfFiles %> documents for you to read.</p>
+        <p>Our current articles</p>
+        <ul class="news-list">
+            <% articles.forEach(article => { %>
+                <li>
+                    <a href="/news/<%= article.slug %>"><%= article.title %></a>
+                    <p><em><%= new Date(article.date).toLocaleDateString() %></em></p>
+                    <p><% article.summary %></p>
+                    <a href="/news/<%= article.slug %>">Read more -></a>
+                </li>
+            <% }) %>
+        </ul>
     </main>
 
     <footer>
