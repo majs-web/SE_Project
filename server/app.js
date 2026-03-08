@@ -12,11 +12,6 @@ app.use(express.static(path.join(__dirname, '../public')));
 app.use(express.urlencoded({ extended: true }))
 app.use(logger)
 
-app.post('./public/about', (request, response) => {
-    console.log('Contact form submission: ', request.body)
-    response.send("Thank you for reaching out - we'll get back to you soon.")
-})
-
 app.get('/', (request, response) => {
     response.send('Welcome to Bondeappen!')
 })
@@ -25,6 +20,11 @@ app.get('/about', (request, response) => {
     console.log(request.query)
 
     response.send('Here you soon find information about us!')
+})
+
+app.post('/about', (request, response) => {
+    console.log('Contact form submission: ', request.body)
+    response.send("Thank you for reaching out - we'll get back to you soon.")
 })
 
 app.listen(PORT, () => {
