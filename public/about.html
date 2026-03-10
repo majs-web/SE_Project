@@ -32,40 +32,37 @@
     </header>
 
     <main>
-        <section>
-            <div class="about-us"></div>
+        <div class="about-us">
+            <div class="content">
                 <h2>About us</h2>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </div>
+            <div class="img">
                 <img height="200px" width="200px">
             </div>
+        </div>
+
+        <section class="contact-form">
+            <form action="/about" method="POST">
+                <div class="name">
+                    <p>Name</p><input type="text" name="name"/>
+                </div>
+                <div class="email">
+                    <p>Email</p><input type="email" name="email"/>
+                </div>
+                <div class="phone">
+                    <p>Phone</p><input type="tel" name="phone"/>
+                </div>
+                <div class="message">
+                    <p>Message</p><textarea name="message"></textarea>
+                </div>
+                <button>Send</button>
+            </form>
         </section>
 
-        <form action="/about" method="POST">
-            <input type="text" name="name" />
-            <input type="email" name="email"/>
-            <input type="tel" name="phone"/>
-            <textarea name="message"></textarea>
-            <button>Send</button>
-        </form>
-
-        <script>
-            const params = new URLSearchParams(window.location.search);
-            if (params.get('success')) {
-                document.getElementById('success-message').textContent = "Thanks for reaching out - we'll get back to you soon!"
-            }
-        </script>
-
-
-<!--         <section class="contact-legal">
-            <div class="container">
-                <p><strong>Contact us</strong><br />
-                Write your concerns and we'll get back to you</p>
-            </div>
-            <a href="#" class="cta-button secondary">Contact us</a>
-        </section> -->
-
+        
     </main>
 
     <footer class="site-footer">
