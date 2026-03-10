@@ -1,5 +1,4 @@
 # Bondeappen / The farmers app
-
 A web platform aimed to help farmers find and organize information about important regulations and requirements.
 
 ## Project Overview, first hand-in SE_19
@@ -27,6 +26,7 @@ A web platform aimed to help farmers find and organize information about importa
     - Also install nodemon to keep server running and auto update when saving --> npm install nodemon --save-dev
     - To start nodemon, run --> npm run dev
     - To stop server --> ctrl + c
+5. Install EJS templating engine --> npm install ejs
 
 ## Features (goal down the line)
 - Users can register and login
