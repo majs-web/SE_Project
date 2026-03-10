@@ -5,12 +5,17 @@
     <%- include('includes/header') %>
 
     <article>
-        <h2><%= article.title %></h2>
-        <p><em><%= new Date(article.date).toLocaleDateString() %></em></p>
-        <p><%= article.body %></p>
+        <div class="article">
+            <div class="container">
+                <h2><%= article.title %></h2>
+                <p><em><%= new Date(article.date).toLocaleDateString() %></em></p>
+                <p><%= article.body %></p>
+            </div>
+            <div class="link">
+                <p><a href="/news">Back to all news</a></p>
+            </div>
+        </div>
     </article>
-
-    <p><a href="/news">Back to all news</a></p>
     
     <%- include('includes/footer') %>
 </body>
