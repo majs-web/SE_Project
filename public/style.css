@@ -210,44 +210,30 @@ h2, h3 {
 
 /* Index.html main setup */
 
-.hero {
+.media {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    flex-wrap: wrap;
     align-items: center;
-    gap: 2em;
-    padding: 1.5em;
-    max-width: 100%;
-    margin: 0 auto;
-    text-align: center;
-}
-
-.hero img {
-    width: 80%;
-    max-width: 400px;
-    height: auto;
-    object-fit: cover;
-    border-radius: 1em;
+    justify-content: space-between;
+    grid-gap: 20px;
+    margin-bottom: 4em;
+    margin: 1em auto 1em auto;
+    width: min(1000px, 100%);
 }
 
 .features {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
     align-items: center;
-    gap: 2em;
-    padding: 1.5em;
-    margin: 0 auto;
-    text-align: center;
+    justify-content: column;
+    gap: 1em;
+    margin: 1em auto;
+    width: min(90%, 100%);
+    background-color: var(--color-1);
 }
 
-.features ul {
-    display: flex;
-    flex-direction: column;
+.features .feature-grid {
     align-items: flex-start;
-    list-style-type: none;
-    gap: 1.5em;
-    padding: 0;
+    justify-content: flex-start;
 }
 
 .contact-box {
@@ -271,11 +257,25 @@ h2, h3 {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 2em;
+    gap: 3em;
     padding: 1em;
-    max-width: 100px;
+    max-width: 1200px;
     margin: 0 auto;
+    flex-wrap: wrap;
 }
+
+.contact-form {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 3em;
+    padding: 1em;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+
 
 /* Legal main setup */
 
@@ -329,6 +329,37 @@ h2, h3 {
     font-weight: 600;
 }
 
+/* News List Page */
+
+.news-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 3em;
+    padding: 1em;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+
+.news-list ul {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    list-style-type: disc;
+    gap: 1.5em;
+    padding: 0;
+}
+
+.news-list h3 a {
+    display: inline-block;
+    text-decoration: none;
+    color: black;
+    border-radius: .5em;
+    font-weight: 600;
+}
+
 /* Tablet (> 768px)*/
 
 @media (min-width: 768px) {
@@ -370,9 +401,11 @@ h2, h3 {
         padding: 2em 1em;
     }
     .about-us {
-        flex-direction: row;
+        flex-direction: column;
+        justify-content: center;
         align-items: center;
-        text-align: left;
+        text-align: center;
+        padding: 2em 1em;
     }
     .about-us img {
         width: 250px;
@@ -412,3 +445,5 @@ h2, h3 {
         font-size: 1.1rem;
     }
 }
+
+
