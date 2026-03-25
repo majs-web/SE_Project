@@ -27,6 +27,7 @@ A web platform aimed to help farmers find and organize information about importa
     - To start nodemon, run --> npm run dev
     - To stop server --> ctrl + c
 5. Install EJS templating engine --> npm install ejs
+6. Install mongoose --> npm install mongoose
 
 ## Features (goal down the line)
 - Users can register and login
