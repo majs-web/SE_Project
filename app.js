@@ -21,13 +21,6 @@ mongoose.connect('mongodb://127.0.0.1:27017/?directConnection=true&serverSelecti
     .then(() => console.log('Database connected'))
     .catch(error => console.error(error))
 
-const cookieSchema = new mongoose.Schema({
-    slug: { type: String, unique: true, required: true },
-    name: { type: String, required: true },
-    priceInCents: { type: Number, required: true },
-    isInStock: { type: Boolean, default: true, required: true }
-})
-
 const app = express();
 const PORT = 3000;
 
