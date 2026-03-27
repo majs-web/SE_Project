@@ -8,21 +8,39 @@ import path from 'path';
 // fileURLToPath converts a file URL into a normal file path
 import { fileURLToPath } from 'url';
 
-import { logger } from './middlewares/logger.js';
+import { logger } from '../middlewares/logger.js';
 
 // Import mock articles
-import { newsArticles } from './data/news.js';
+import { newsArticles } from '../data/news.js';
 import { request } from 'http';
+
+//_________________________
+
 
 // ODM import + ensure that mongoose is connected
 import mongoose from 'mongoose';
 
-mongoose.connect('mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.8.1')
+mongoose.connect('mongodb://127.0.0.1:27017/testingthis')
     .then(() => console.log('Database connected'))
     .catch(error => console.error(error))
 
+const cookieSchema = new mongoose.Schema({
+    slug: { type: String, unique: true, required: true },
+    name: { type: String, required: true },
+    priceInCents: { type: Number, required: true },
+    isInStock: { type: Boolean, default: true, required: true }
+})
+
+const Cookie = mongoose.model('Cookie', cookieSchema);
+
+
+
+//---------------------
 const app = express();
 const PORT = 3000;
+/* import { fileURLToPath } from 'url'; */
+//import { connectToDb, getDb } from './db.js';
+/* const { connectToDb, getDb } = require('./db') */
 
 // __filename is the full path of the current file
 // import.meta.url provides the current file URL
@@ -42,10 +60,55 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: true }));
 app.use(logger);
 
+// db connection
+/* let db
+connectToDb((err) => {
+    if (!err) {
+        app.listen(3000, () => {
+            console.log(`Started server on port 3000`);
+        })
+        db = getDb()
+    }
+}) */
+
+// Test with book example
+/* app.get('/books', (request, response) => {
+    let books = [] // Where the books get stored after retreiving from db
+
+    db.collection('books')
+        .find() // .find() returns cursor, can use two methods, toArray and forEach -> brings back different 
+        .sort({ author: 1 })
+        .forEach(book => books.push(book)) // Iterate each book individually
+        .then(() => {
+            response.status(200).json(books)
+        })
+        .catch(() => {
+            response.status(500).json({error: 'Could not fetch the documents'})
+        })
+}) */
+
+// ---------------------
+
+/* app.post('/cookies', (request, response) => {
+    const cookie = new Cookie({
+        slug: 'chocolate-chip',
+        name: 'Chocolate Chip',
+        priceInCents: 350
+    })
+    cookie.save()
+
+    response.send('Cookie Created')
+})  */
+
+
+
+
+// ---------------------
+
 //Define the root
-app.get('/', (request, response) => {
+/* app.get('/', (request, response) => {
     response.sendFile('index', {root: './'});
-})
+}) */
 
 
 /* app.use(express.static('public')); */
