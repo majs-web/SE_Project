@@ -8,10 +8,10 @@ import path from 'path';
 // fileURLToPath converts a file URL into a normal file path
 import { fileURLToPath } from 'url';
 
-import { logger } from '../middlewares/logger.js';
+import { logger } from './middlewares/logger.js';
 
 // Import mock articles
-import { newsArticles } from '../data/news.js';
+import { newsArticles } from './data/news.js';
 import { request } from 'http';
 
 //_________________________
