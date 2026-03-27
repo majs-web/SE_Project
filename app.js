@@ -105,17 +105,30 @@ connectToDb((err) => {
 
 // ---------------------
 
-//Define the root
-/* app.get('/', (request, response) => {
-    response.sendFile('index', {root: './'});
-}) */
-
-
 /* app.use(express.static('public')); */
 
 // I added app.get() for the static pages to avoid the .html in the URLs. 
-app.get('/', (request, response) => {
+/* app.get('/', (request, response) => {
     response.sendFile(path.join(__dirname, 'public', 'index.html'));
+}) */
+
+//Define the root
+app.get('/', (request, response) => {
+    response.render('index', {root: './'});
+})
+
+app.get('/about', (request, response) => {
+    response.render('about');
+})
+
+// After form is filled out and user clicks send, they return to the about-page.
+app.post('/about', (request, response) => {
+    console.log('Contact form submission: ', request.body);
+    response.redirect("/about?success=1");
+})
+
+app.get('/legal', (request, response) => {
+    response.render('legal');
 })
 
 // When accessing "localhost:3000/news", Express sends back the rendered 
@@ -139,19 +152,13 @@ app.get('/news/:slug', (request, response) => {
     response.render('article', { article });
 });
 
-app.get('/about', (request, response) => {
+/* app.get('/about', (request, response) => {
     response.sendFile(path.join(__dirname, 'public', 'about.html'));
-})
+}) */
 
-// After form is filled out and user clicks send, they return to the about-page.
-app.post('/about', (request, response) => {
-    console.log('Contact form submission: ', request.body);
-    response.redirect("/about.html?success=1");
-})
-
-app.get('/legal', (request, response) => {
+/* app.get('/legal', (request, response) => {
     response.sendFile(path.join(__dirname, 'public', 'legal.html'));
-})
+}) */
 
 app.listen(PORT, () => {
     console.log(`Started server on port ${PORT}`);
