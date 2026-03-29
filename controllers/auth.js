@@ -7,57 +7,67 @@ const auth = new AuthService();
 
 // GET login
 
-router.get('/login', (require, respond) => {
-    if (require.session.username) return respond.redirect('/profile');
-    respond.render('login');
+router.get('/login', (request, response) => {
+    if (request.session.username) {
+        return response.redirect('/profile');
+    }
+    response.render('login');
 });
 
 // POST login
 
-router.post('/login', async (require, respond) => {
-    const { username, password } = require.body;
-    const user = await new AuthService().login(username, password);
+router.post('/login', async (request, response) => {
+    const { username, password } = request.body;
+    const user = await auth.login(username, password);
 
     if (!user) {
-        return respond.render('login', { error: 'Invalid username or password' });
+        return response.render('login', { error: 'Invalid username or password' });
     }
 
     request.session.username = username;
-    request.redirect('/profile');
+    response.redirect('/profile');
 })
 
 // GET signup
 
-router.get('/signup', (require, respond) => {
-    if (require.session.username) return respond.redirect('/profile');
+router.get('/signup', (request, response) => {
+    if (request.session.username) {
+        return response.redirect('/profile');
+    }
 });
 
 //POST signup
 
-router.post('/signup', async (require, respond) =>{
-    const { username, passwordd } = require.boddy;
-    const user = await new AuthService().signup(username, password);
+router.post('/signup', async (request, response) => {
+    const { username, password } = request.body;
+    const user = await auth.signup(username, password);
 
     if (!user) {
-        return respond.render('signup', { error: 'User already exists.' });
+        return response.render('signup', { error: 'User already exists.' });
     }
 
-    require.session.username = username;
-    respond.redirect('/profile');
-})
+    request.session.username = username;
+    response.redirect('/profile');
+});
 
 // Protected route
 
-router.get('/profile', (request, respond) => {
-    if (!require.session.username) return respond.redirect('/login');
-    respond.render('profile', { username: require.session.username });
+router.get('/profile', (request, response) => {
+    if (!request.session.username) {
+        return response.redirect('/login');
+    }
+    response.render('profile', { username: request.session.username });
 });
 
 // Logout
-router.get('/logout', (require, respond) => {
-    require.session.destroy(() => {
-        respond.redirect('/login');
+router.get('/logout', (request, response) => {
+    request.session.destroy(() => {
+        response.redirect('/login');
     });
+});
+
+router.get('/certificates', (request, response) => {
+    response.render('certificates');
 });
 
 export default router;
