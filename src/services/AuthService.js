@@ -5,6 +5,25 @@ export default class AuthService {
     static USERS = [];
     static SALT_ROUNDS = 12;
 
+    constructor() {
+        this.createTestUser();
+    }
+
+    async createTestUser() {
+        if (AuthService.USERS.length > 0) return;
+        const username = "testuser";
+        const password = "password123";
+
+        const salt = await bcrypt.genSalt(AuthService.SALT_ROUNDS);
+        const hashedPassword = await bcrypt.hash(password, salt);
+
+        AuthService.USERS.push({
+            username,
+            password: hashedPassword
+        });
+        console.log("Test user created:", username);
+    }
+
     async login(username, password) {
         const user = AuthService.USERS.find(u => u.username === username);
         if (!user) {
