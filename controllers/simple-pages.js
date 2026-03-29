@@ -1,10 +1,16 @@
 
+import { Router } from 'express';
+
+const router = Router();
+
 //Define the root
-app.get('/', (request, response) => {
+router.get('/', (request, response) => {
     response.render('index', {root: './'});
 })
 
 // Legal page
-app.get('/legal', (request, response) => {
+router.get('/legal', (request, response) => {
     response.render('legal');
 })
+
+export default router;
