@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('includes/login-head.ejs', {title: 'Home'}) %>
+<body>
+
+    <% if (typeof errorr !== 'undefined') { %>
+    <p style="color:red"><%= error %></p>
+    <% } %>
+
+    <form method="POST" action="/login">
+        <input name="username" placeholder="Username" required />
+        <input name="password" placeholder="Password" type="password">
+        <button>Login</button>
+    </form>
+
+    <a href="/signup">Sign up</a>
+
+    <%- include('includes/footer') %>
+</body>
+</html>

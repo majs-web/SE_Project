@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('includes/login-head.ejs', {title: 'Home'}) %>
+<body>
+
+    <main>
+        <h2>Welcome, <%= username %>!</h2>
+        <a href="/logout">Logout</a>
+    </main>
+
+    <%- include('includes/footer') %>
+</body>
+</html>
