@@ -1,0 +1,92 @@
+/* Setup fonts, colors, basic margins and padding*/
+
+.poppins-semibold {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-style: normal;
+}
+
+.poppins-bold {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.inter-uniquifier> {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: weight;
+  font-style: normal;
+}
+
+:root {
+    --base-color: #D6F2E1;
+    --text-color: #000000;
+    --primary-color: #0C7033;
+    --secondary-color: #EFFFF5;
+    --color-1: #FFFFFF;
+    --color-2: #B4E9C8;
+    --color-3: #F6F3F9;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    color: var(--text-color);
+}
+
+body {
+    padding: 1em;
+    background-color: var(--base-color);
+    line-height: 1.6;
+}
+
+h2, h3 {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+}
+
+/* End basic setup fonts, colors, margins */
+
+
+#container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+form {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    background-color: gainsboro;
+    height: 400px;
+    width: 400px;
+    border-radius: 40px;
+}
+
+input:not([type='submit']) {
+    width: 250px;
+    height: 25px;
+    border-radius: 5px;
+    border: transparent;
+    padding: 2px 0 2px 5px;
+    margin: 10px 0;
+}
+
+input[type='submit'] {
+    font-size: 1.2em;
+    border: none;
+    margin-top: 5px;
+    border-radius: 5px;
+}
