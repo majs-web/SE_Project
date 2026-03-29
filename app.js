@@ -1,13 +1,17 @@
 
 import express, { response } from 'express';
-
 import { logger } from './middlewares/logger.js';
+
+import session from 'express-session';
+import authRoutes from './controllers/auth.js'
+
+// Import controllers
+import simpleRoutes from './controllers/simple-pages.js';
+import newsRoutes from './controllers/news.js';
+import aboutRoutes from './controllers/about.js';
 
 const app = express();
 const PORT = 3000;
-/* import { fileURLToPath } from 'url'; */
-//import { connectToDb, getDb } from './db.js';
-/* const { connectToDb, getDb } = require('./db') */
 
 // Config 
 app.set('view engine', 'ejs');
@@ -19,11 +23,25 @@ app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 app.use(logger);
 
+app.use(session({
+    name: 'MySessionID',
+    secret: process.env.SECRET || 'dev_secret',
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+        httpOnly: false //only works false when localhost
+    }
+}));
+
+// Controllers
+app.use(simpleRoutes);
+app.use(newsRoutes);
+app.use(aboutRoutes);
+app.use(authRoutes);
+
 app.listen(PORT, () => {
     console.log(`Started server on port ${PORT}`);
 })
-
-_________________
 
 // db connection
 /* let db
