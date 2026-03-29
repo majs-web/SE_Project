@@ -1,5 +1,4 @@
 
-// Created with help of YouTube tutorial
 import bcrypt from 'bcrypt';
 
 export default class AuthService {
