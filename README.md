@@ -28,6 +28,7 @@ A web platform aimed to help farmers find and organize information about importa
     - To stop server --> ctrl + c
 5. Install EJS templating engine --> npm install ejs
 6. Install mongoose --> npm install mongoose
+7. Install express-session for login
 
 ## Features (goal down the line)
 - Users can register and login
