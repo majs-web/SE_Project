@@ -5,6 +5,21 @@
 
     <main>
         <h2>Welcome, <%= username %>!</h2>
+
+        <section class="certificate">
+            <form action="certificate" method="POST">
+                <div class="certificate">
+                    <h2>Add new certificate</h2>
+                    <h6 style="color: red", #{error}></h6>
+                <label>Certificate title:</label>
+                    <input type="text" name="certificatetitle"/>
+                <label>Type of certificate:</label> 
+                    <input type="text" name="certificatetype"/>
+                    <a href="/certificates" style="margin-top: 10px;">Submit</a></br>
+            </form>
+            <a href="/certificates">View all certificates</a>
+        </section>
+
         <a href="/logout">Logout</a>
     </main>
 
