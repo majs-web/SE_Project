@@ -2,15 +2,16 @@
 <html lang="en">
     <%- include('includes/login-head.ejs', {title: 'Home'}) %>
 <body>
+    <%- include('includes/login-header.ejs') %>
 
-    <% if (typeof errorr !== 'undefined') { %>
+    <% if (typeof error !== 'undefined') { %>
     <p style="color:red"><%= error %></p>
     <% } %>
 
     <form method="POST" action="/login">
         <input name="username" placeholder="Username" required />
         <input name="password" placeholder="Password" type="password">
-        <button>Login</button>
+        <button href="/profile">Login</button>
     </form>
 
     <a href="/signup">Sign up</a>
@@ -30,8 +31,8 @@
                 <button>Login</button>
             </form>
         </section>
-    </main>
+    </main> -->
 
-    <%- include('includes/footer') %> -->
+    <%- include('includes/footer') %>
 </body>
 </html>
