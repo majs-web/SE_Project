@@ -34,6 +34,7 @@ router.get('/signup', (request, response) => {
     if (request.session.username) {
         return response.redirect('/profile');
     }
+    response.render('signup');
 });
 
 //POST signup
