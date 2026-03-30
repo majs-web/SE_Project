@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('../includes/head', {title: 'Home'}) %>
+<body>
+    <%- include('../includes/header') %>
+
+  <main>
+    <h1><%= certificate.name %></h1>
+    <p><%= certificate.description %></p>
+    <% if(certificate.isInStock) { %> 
+      <p style="color: green;">Registered!</p>
+    <% } else { %>
+      <p style="color: tomato;">Not registered!</p>
+    <% } %>
+  </main>
+
+    <%- include('../includes/footer') %>
+</body>
+</html>

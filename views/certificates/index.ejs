@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('../includes/head', {title: 'Home'}) %>
+<body>
+    <%- include('../includes/header') %>
+
+  <main>
+    <p>Registered certificates:</p>
+    <ul>
+      <% certificates.forEach(certificate => { %>
+        <li>
+          <% if(certificate.isInStock) { %> 
+            <a href="/certificates/<%= certificate.slug %>"><%= certificate.name %>: <%= certificate.description %></a>
+          <% } else { %>
+            <%= certificate.name %> [NOT FOUND] 
+          <% } %>
+        </li>
+      <% }) %>
+    </ul>
+  </main>
+
+    <%- include('../includes/footer') %>
+</body>
+</html>
