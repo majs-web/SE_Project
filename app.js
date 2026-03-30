@@ -34,10 +34,10 @@ app.use(session({
 }));
 
 // Controllers
+app.use(authRoutes);
 app.use(simpleRoutes);
 app.use(newsRoutes);
 app.use(aboutRoutes);
-app.use(authRoutes);
 
 app.listen(PORT, () => {
     console.log(`Started server on port ${PORT}`);
