@@ -1,4 +1,4 @@
-
+/* 
 // ODM import + ensure that mongoose is connected
 import mongoose from 'mongoose';
 
@@ -13,4 +13,4 @@ const cookieSchema = new mongoose.Schema({
     isInStock: { type: Boolean, default: true, required: true }
 })
 
-const Cookie = mongoose.model('Cookie', cookieSchema);
+const Cookie = mongoose.model('Cookie', cookieSchema); */
