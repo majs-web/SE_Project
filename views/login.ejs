@@ -2,34 +2,20 @@
 <html lang="en">
     <%- include('includes/login-head.ejs', {title: 'Home'}) %>
 <body>
-    <%- include('includes/login-header.ejs') %>
+    <%- include('includes/header.ejs') %>
 
     <% if (typeof error !== 'undefined') { %>
     <p style="color:red"><%= error %></p>
     <% } %>
 
      <form method="POST" action="/login">
+        <h2>Log in</h2>
         <input name="username" placeholder="Username" required />
         <input name="password" placeholder="Password" type="password">
         <button href="/profile">Login</button>
     </form>
 
     <a href="/signup">Sign up</a>
-<!--      <main>
-        <section class="login">
-            <form action="/login" method="POST">
-                <div class="signup">
-                    <h2>Login</h2>
-                    <h6 style="color: red", #{error}></h6>
-                <label>Username:</label>
-                    <input type="text" name="username"/>
-                <label>Password:</label> 
-                    <input type="text" name="password"/>
-                    <input type="submit" value="Login">
-                    <a href="/signup" style="margin-top: 10px;">Not registered? Sign up.</a>
-            </form>
-        </section>
-    </main>  -->
 
     <%- include('includes/footer') %>
 </body>

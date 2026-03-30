@@ -2,32 +2,18 @@
 <html lang="en">
     <%- include('includes/login-head.ejs', {title: 'Home'}) %>
 <body>
-
+    <%- include('includes/login-header') %>
     <main>
         <h2>Welcome, <%= username %>!</h2><br />
 
         <h4>What would you like to do?</h4>
 
         <section class="profile-selection">
-            <button><a href="/certificates">Register new certificate</a></button>
+            <button><a href="/certificates/new">Register new certificate</a></button>
             <button><a href="#">See my notes</a></button>
             <button><a href="#">See my entries</a></button>
             <button><a href="#">See my blog</a></button>
         </section>
-
-<!--         <section class="certificate">
-            <form action="certificate" method="POST">
-                <div class="certificate">
-                    <h2>Add new certificate</h2>
-                    <h6 style="color: red", #{error}></h6>
-                <label>Certificate title:</label>
-                    <input type="text" name="certificatetitle"/>
-                <label>Type of certificate:</label> 
-                    <input type="text" name="certificatetype"/>
-                    <a href="/certificates" style="margin-top: 10px;">Submit</a></br>
-            </form>
-            <a href="/certificates">View all certificates</a>
-        </section> -->
 
         <a href="/logout">Logout</a>
     </main>

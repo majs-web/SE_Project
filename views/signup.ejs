@@ -2,18 +2,21 @@
 <html lang="en">
     <%- include('includes/login-head.ejs', {title: 'Home'}) %>
 <body>
+    <%- include('includes/header') %>
 
-    <% if (typeof errorr !== 'undefined') { %>
+    <% if (typeof error !== 'undefined') { %>
     <p style="color:red"><%= error %></p>
     <% } %>
 
     <form method="POST" action="/signup">
+        <h2>Sign up</h2>
         <input name="username" placeholder="Username" required />
         <input name="password" placeholder="Password" type="password">
         <button href="/profile">Sign Up</button>
     </form>
 
-    <p>Already have a profile?</p><a href="/login">Login</a>
+    <p>Already have a profile?</p>
+    <a href="/login">Login</a>
 
     <%- include('includes/footer') %>
 </body>
