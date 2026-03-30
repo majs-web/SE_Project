@@ -1,5 +1,6 @@
 
 import bcrypt from 'bcrypt';
+import { User } from '../../models/user-model.js';
 
 export default class AuthService {
     static USERS = [];
