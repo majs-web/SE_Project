@@ -67,8 +67,4 @@ router.get('/logout', (request, response) => {
     });
 });
 
-router.get('/certificates', (request, response) => {
-    response.render('certificates');
-});
-
 export default router;
