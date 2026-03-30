@@ -4,9 +4,18 @@
 <body>
 
     <main>
-        <h2>Welcome, <%= username %>!</h2>
+        <h2>Welcome, <%= username %>!</h2><br />
 
-        <section class="certificate">
+        <h4>What would you like to do?</h4>
+
+        <section class="profile-selection">
+            <button><a href="/certificates">Register new certificate</a></button>
+            <button><a href="#">See my notes</a></button>
+            <button><a href="#">See my entries</a></button>
+            <button><a href="#">See my blog</a></button>
+        </section>
+
+<!--         <section class="certificate">
             <form action="certificate" method="POST">
                 <div class="certificate">
                     <h2>Add new certificate</h2>
@@ -18,7 +27,7 @@
                     <a href="/certificates" style="margin-top: 10px;">Submit</a></br>
             </form>
             <a href="/certificates">View all certificates</a>
-        </section>
+        </section> -->
 
         <a href="/logout">Logout</a>
     </main>

@@ -7,12 +7,24 @@
     </header>
 
     <main>
-        <ul class="certificate-list">
+        <h2>Register new certificate</h2>
+
+        <form action="/certificates" method="POST">
+            <input type="text" name="name" placeholder="name" required /><br />
+            <input type="text" name="slug" placeholder="slug" required /><br />
+            <input type="text" name="description" placeholder="description" required /><br />
+            <button>Save</button><br />
+            <button><a href="/profile">Back to main page</a></button>
+        </form>
+
+
+
+<!--         <ul class="certificate-list">
             <h2>Your certificates</h2>
             <li>Certificate 1</li>
             <li>Certificate 2</li>
         </ul>
-        <a href="/profile">Back</a>
+        <a href="/profile">Back</a> -->
     </main>
 
     <footer>
