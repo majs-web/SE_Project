@@ -4,15 +4,28 @@
 <body>
     <%- include('../includes/header') %>
 
-  <main>
-    <h1><%= certificate.name %></h1>
-    <p><%= certificate.description %></p>
-    <% if(certificate.isInStock) { %> 
-      <p style="color: green;">Registered!</p>
-    <% } else { %>
-      <p style="color: tomato;">Not registered!</p>
-    <% } %>
-  </main>
+<!--     <article>
+        <div class="certificate">
+            <div class="container">
+                <h2><%= certificate.title %></h2>
+                <p><em><%= new Date(certificate.date).toLocaleDateString() %></em></p>
+                <p><%= certificate.body %></p>
+            </div>
+            <div class="link">
+                <p><a href="/certificates/new">Back to all news</a></p>
+            </div>
+        </div>
+    </article> -->
+
+    <main>
+        <h1><%= certificate.name %></h1>
+        <p><%= certificate.description %></p>
+        <% if(certificate.isInStock) { %> 
+        <p style="color: green;">In Stock!</p>
+        <% } else { %>
+        <p style="color: tomato;">Sold out!</p>
+        <% } %>
+    </main>
 
     <%- include('../includes/footer') %>
 </body>

@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-    <%- include('../includes/head', {title: 'Home'}) %>
+    <%- include('../includes/login-head', {title: 'Home'}) %>
 <body>
-    <%- include('../includes/header') %>
+    <%- include('../includes/login-header') %>
 
   <main>
+    <button>
+      <a href="/certificates/new">Register new certficate</a>
+    </button>
     <p>Registered certificates:</p>
     <ul>
       <% certificates.forEach(certificate => { %>

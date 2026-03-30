@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('../includes/login-head', {title: 'Home'}) %>
+<body>
+    <header>
+        <%- include('../includes/login-header') %>
+    </header>
+
+    <main>
+        <h2>Add new certificate</h2>
+        <form action="/certificates/new" method="POST">
+            <input type="text" name="name" placeholder="name" required /><br />
+            <input type="text" name="slug" placeholder="slug" required /><br />
+            <input type="text" name="description" placeholder="description" required /><br />
+            <button>Save</button><br />
+        </form>
+        <button><a href="/profile">Back to main page></a></button>
+        <button><a href="/certificates">See all registered certificates></a></button>
+    </main>
+
+    <footer>
+        <%- include('../includes/footer') %>
+    </footer>
+</body>
+</html>
