@@ -1,80 +1,103 @@
-import { Router } from 'express';
+import { request, Router } from 'express';
 import { Certificate } from '../models/certificates.js';
+import { isLoggedIn } from '../middlewares/isLoggedIn.js';
 
 const router = Router();
 
-router.post('/certificates', async (request, response) => {
+// GET all certificates
+router.get('/certificates', isLoggedIn, async (request, response) => {
+    try {
+        const certificates = await Certificate.find({});
+        response.render('certificates/index', { certificates });
+    }catch(error) {
+        console.error(error);
+        response.render('certificates/index', { certificates: [] });
+    }
+});
+
+// GET new certificate form
+router.get('/certificates/new', isLoggedIn, (request, response) => {
+    response.render('certificates/new');
+});
+
+// POST create new certificate
+router.post('/certificates/new', isLoggedIn, async (request, response) => {
     try {
         const certificate = new Certificate({
             slug: request.body.slug,
             name: request.body.name,
-            description: request.body.description
+        description: request.body.description
         });
-        await certificate.save()
 
-        response.send('Certificate was uploaded');
-    }catch (error) {
+        await certificate.save();
+        response.redirect('/certificates');
+    }catch(error) {
         console.error(error);
-        response.send('Error: The certificate could not be uploaded.');
-    };
-});
-
-router.get('/certificates', (request, response) => {
-    response.render('certificates');
-});
-
-/* router.get('/certificates', async (request, response) => {
-    try {
-        const certificates = await Certificate.find({ isInStock: true }).exec()
-        if(!cookie) throw new Error ('Certificate not found')
-
-        response.render('certificates/index', {
-            certificates: certificates,
-            description: description
-        })
-    }catch(error) {
-        console.error(error)
-        response.status(404).send("Could not find the certificate you're looking for.")
-    }
-}); */
-
-router.get('/certificates/:slug/edit', async (request, response) => {
-    try {
-        const slug = request.params.slug
-        const certificate = await Certificate.findOne({ slug: slug }).exec()
-        if(!certificate) throw new Error('Certifiicate not found')
-        
-        response.render('certificates/edit', { certificate: certificate })
-    }catch(error) {
-        console.error(error)
-        response.status(404).send("Could not find the certificate you're looking for.")
+        response.send('Error: The certificate could not be created.');
     }
 });
 
-router.post('/certificates/:slug', async (request, response) => {
+// GET single certificate
+router.get('/certificates/:slug', isLoggedIn, async (request, response) => {
+    try {
+        const certificate = await Certificate.findOne({ slug: request.params.slug });
+
+        if (!certificate) {
+            return response.status(404).send('Certificate not found.');
+        }
+
+        response.render('certificates/show', { certificate });
+    }catch(error) {
+        console.error(error);
+        response.status(404).send('Error loading certificate.');
+    }
+});
+
+// GET edit certificate page
+router.get('/certificates/:slug/edit', isLoggedIn, async (request, response) => {
+    try {
+        const certificate = await Certificate.findOne({ slug: request.params.slug });
+
+        if (!certificate) {
+            return response.status(404).send('Certifiicate not found.');
+        }
+
+        response.render('certificates/edit', { certificate });
+    }catch(error) {
+        console.error(error);
+        response.status(404).send('Couldd not load edit page.');
+    }
+});
+
+// POST update certificate
+router.post('/certificates/:slug', isLoggedIn, async (request, response) => {
     try {
         const certificate = await Certificate.findOneAndUpdate(
             { slug: request.params.slug },
             request.body,
             { new: true }
-        )
+        );
 
-        response.redirect(`/certificates/${certificate.slug}`)
-    }catch (error) {
-        console.error(error)
-        response.send('Error: The certificate could not be updated.')
+        if (!certificate) {
+            return response.status(404).send('Certificate not foundd.');
+        }
+
+        response.redirect(`/certificates/${certificate.slug}`);
+    }catch(error) {
+        console.error(error);
+        response.send('Error: The certificate could not be updated.');
     }
 });
 
-router.get('/certificates/:slug/delete', async (request, response) => {
+// DELETE certificate
+router.get('/certificates/:slug/delete', isLoggedIn, async (request, response) => {
     try {
-        await Certificate.findOneAndDelete({ slug: request.params.slug })
-
-        response.redirect('/certificates')
-    }catch (error) {
-        console.error(error)
-        response.send('Error: No certificate was deleted.')
+        await Certificate.findOneAndDelete({ slug: request.params.slug });
+        response.redirect('/certificates');
+    }catch(error) {
+        console.error(error);
+        response.send('Error: No certificate was deleted.');
     }
-})
+});
 
 export default router;
