@@ -7,16 +7,18 @@
     <% if (typeof error !== 'undefined') { %>
     <p style="color:red"><%= error %></p>
     <% } %>
-
-    <form method="POST" action="/signup">
-        <h2>Sign up</h2>
-        <input name="username" placeholder="Username" required />
-        <input name="password" placeholder="Password" type="password">
-        <button>Sign Up</button>
-    </form>
-
-    <p>Already have a profile?</p>
-    <a href="/login">Login</a>
+    <section class="contact-form">
+        <form method="POST" action="/signup">
+            <h2>Sign up</h2>
+            <input name="username" placeholder="Username" required />
+            <input name="password" placeholder="Password" type="password">
+            <button class="form-button">Sign up</button>
+        </form>
+        <div class="logo-and-info">
+            <h3>Already have a profile?</h3>
+            <a href="/login" class="login-button">Login</a>
+        </div>
+    </section>
 
     <%- include('includes/footer') %>
 </body>
