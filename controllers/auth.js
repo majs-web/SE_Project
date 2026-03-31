@@ -1,58 +1,50 @@
 
 import { Router } from 'express';
-import AuthService from '../src/services/AuthService.js'
+import { User } from '../models/users.js';
 
 const router = Router();
-const auth = new AuthService();
 
 // GET login
-
 router.get('/login', (request, response) => {
-    if (request.session.username) {
-        return response.redirect('/profile');
-    }
     response.render('login');
 });
 
 // POST login
-
 router.post('/login', async (request, response) => {
     const { username, password } = request.body;
-    const user = await auth.login(username, password);
+    const user = await User.findOne({ username });
 
-    if (!user) {
-        return response.render('login', { error: 'Invalid username or password' });
+    if (!user || user.password !== password) {
+        return response.render('login', { error: 'Wrong username or password.' });
     }
 
-    request.session.username = username;
+    request.session.username = user.username;
     response.redirect('/profile');
 })
 
 // GET signup
-
 router.get('/signup', (request, response) => {
-    if (request.session.username) {
-        return response.redirect('/profile');
-    }
     response.render('signup');
 });
 
-//POST signup
-
+//POST create new user
 router.post('/signup', async (request, response) => {
-    const { username, password } = request.body;
-    const user = await auth.signup(username, password);
-
-    if (!user) {
-        return response.render('signup', { error: 'User already exists.' });
+    try {
+        const { username, password } = request.body;
+        const existingUser = await User.findOne({ username });
+        if (existingUser) {
+            return response.render('signup', { error: 'This user already exists.' });
+        }
+        const user = new User({ username, password });
+        await user.save();
+        response.redirect('/login');
+    }catch(error) {
+        console.error(error);
+        response.send('Something went wrong: Could not create user.');
     }
-
-    request.session.username = username;
-    response.redirect('/profile');
 });
 
-// Protected route
-
+// GET profile
 router.get('/profile', (request, response) => {
     if (!request.session.username) {
         return response.redirect('/login');
@@ -60,7 +52,7 @@ router.get('/profile', (request, response) => {
     response.render('profile', { username: request.session.username });
 });
 
-// Logout
+// GET logout
 router.get('/logout', (request, response) => {
     request.session.destroy(() => {
         response.redirect('/login');
