@@ -8,7 +8,7 @@ router.get('/about', (request, response) => {
 })
 
 // After form is filled out and user clicks send, they return to the about-page.
-router.post('/about', async (request, response) => {
+router.post('/about', (request, response) => {
     console.log('Contact form submission: ', request.body);
     response.redirect("/about?success=1");
 })
