@@ -24,8 +24,8 @@ router.get('/certificates/new', isLoggedIn, (request, response) => {
 router.post('/certificates/new', isLoggedIn, async (request, response) => {
     try {
         const certificate = new Certificate({
-            slug: request.body.slug,
             name: request.body.name,
+            date: request.body.date,
             description: request.body.description
         });
 
@@ -56,16 +56,14 @@ router.get('/certificates/:slug', isLoggedIn, async (request, response) => {
 // GET edit certificate page
 router.get('/certificates/:slug/edit', isLoggedIn, async (request, response) => {
     try {
-        const certificate = await Certificate.findOne({ slug: request.params.slug });
-
-        if (!certificate) {
-            return response.status(404).send('Certifiicate not found.');
-        }
-
-        response.render('certificates/edit', { certificate });
+        const slug = request.params.slug
+        const certificate = await Certificate.findOne({ slug: slug }).exec();
+        if (!certificate) throw new Error('Certificate not found.');
+        
+        response.render('certificates/edit', { certificate: certificate });
     }catch(error) {
         console.error(error);
-        response.status(404).send('Couldd not load edit page.');
+        response.status(404).send('Could not edit.');
     }
 });
 
@@ -76,11 +74,7 @@ router.post('/certificates/:slug', isLoggedIn, async (request, response) => {
             { slug: request.params.slug },
             request.body,
             { new: true }
-        );
-
-        if (!certificate) {
-            return response.status(404).send('Certificate not foundd.');
-        }
+        )
 
         response.redirect(`/certificates/${certificate.slug}`);
     }catch(error) {
