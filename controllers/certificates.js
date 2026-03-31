@@ -1,4 +1,4 @@
-import { request, Router } from 'express';
+import { Router } from 'express';
 import { Certificate } from '../models/certificates.js';
 import { isLoggedIn } from '../middlewares/isLoggedIn.js';
 
@@ -26,7 +26,7 @@ router.post('/certificates/new', isLoggedIn, async (request, response) => {
         const certificate = new Certificate({
             slug: request.body.slug,
             name: request.body.name,
-        description: request.body.description
+            description: request.body.description
         });
 
         await certificate.save();
