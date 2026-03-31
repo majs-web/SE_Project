@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-    <%- include('../includes/head', {title: 'Home'}) %>
+    <%- include('../includes/head', {title: 'Edit Certificate | Webproject'}) %>
 <body>
     <%- include('../includes/header') %>
 
@@ -8,9 +8,9 @@
     <h2>Edit certificate</h2>
 
     <form action="/certificates/<%= certificate.slug %>" method="POST">
-      <input type="text" value="<%= certificate.name %>" name="name" placeholder="name" /><br />
-      <input type="text" value="<%= certificate.slug %>" name="slug" placeholder="slug" /><br />
-      <input type="text" value="<%= certificate.description %>" name="description" placeholder="description" /><br />
+      <input type="text" value="<%= certificate.name %>" name="name" placeholder="Name" /><br />
+      <input type="date" value="<%= certificate.date %>" name="date" placeholder="Date" /><br />
+      <input type="text" value="<%= certificate.description %>" name="description" placeholder="Description" /><br />
       <button>Save</button>
     </form>
   </main>

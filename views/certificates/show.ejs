@@ -1,30 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-    <%- include('../includes/head', {title: 'Home'}) %>
+    <%- include('../includes/head', {title: `${certificate.name} | Webproject`}) %>
 <body>
     <%- include('../includes/header') %>
 
-<!--     <article>
-        <div class="certificate">
-            <div class="container">
-                <h2><%= certificate.title %></h2>
-                <p><em><%= new Date(certificate.date).toLocaleDateString() %></em></p>
-                <p><%= certificate.body %></p>
-            </div>
-            <div class="link">
-                <p><a href="/certificates/new">Back to all news</a></p>
-            </div>
-        </div>
-    </article> -->
-
     <main>
-        <h1><%= certificate.name %></h1>
+        <h2><%= certificate.name %></h2>
+        <p><em><%= new Date(certificate.date).toLocaleDateString() %></em></p>
         <p><%= certificate.description %></p>
-        <% if(certificate.isInStock) { %> 
-        <p style="color: green;">In Stock!</p>
-        <% } else { %>
-        <p style="color: tomato;">Sold out!</p>
-        <% } %>
+        <button><a href="/certificates/<%= certificate.slug %>/edit">Edit</a></button><br />
+                <button><a href="/certificates/<%= certificate.slug %>/delete">Delete</a></button><br />
+        <button><a href="/profile">Back</a></button>
     </main>
 
     <%- include('../includes/footer') %>
