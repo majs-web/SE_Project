@@ -1,9 +1,8 @@
 
-import { Router, urlencoded } from 'express';
+import { Router } from 'express';
 
 // Import mock articles
-import { newsArticles } from '../data/news.js';  
-import { isLoggedIn } from '../middlewares/isLoggedIn.js';
+import { newsArticles } from '../data/news.js';
 
 const router = Router();
 
@@ -12,14 +11,14 @@ const router = Router();
 // "articles:" is what is used in the .ejs file, "newsArticles" is what I defined it as in this file
 router.get('/news', async (request, response) => {
     response.render('news', { articles: newsArticles });
-})
+});
 
 // Using .find() to go through newsArticles array in news.js --> when slug is a match, 
 // Express renders article.ejs with the correct article 
 router.get('/news/:slug', async (request, response) => {
     const article = newsArticles.find(a => a.slug === request.params.slug);
     response.render('article', { article });
-})
+});
 
 //NB: async: Relevant when I connect the real database.
 
