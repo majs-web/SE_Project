@@ -1,17 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-    <%- include('../includes/head', {title: `${certificate.name} | Webproject`}) %>
+    <%- include('../includes/login-head', {title: `${certificate.name} | Webproject`}) %>
 <body>
     <%- include('../includes/header') %>
 
-    <main>
-        <h2><%= certificate.name %></h2>
-        <p><em><%= new Date(certificate.date).toLocaleDateString() %></em></p>
-        <p><%= certificate.description %></p>
-        <button><a href="/certificates/<%= certificate.slug %>/edit">Edit</a></button><br />
-        <button><a href="/certificates/<%= certificate.slug %>/delete">Delete</a></button><br />
-        <button><a href="/profile">Back</a></button>
-    </main>
+    <article>
+        <div class="article">
+            <div class="container">
+                <h2><%= certificate.name %></h2>
+                <p><em><%= new Date(certificate.date).toLocaleDateString() %></em></p>
+                <p><%= certificate.description %></p>
+                <a class="login-button" href="/certificates/<%= certificate.slug %>/edit">Edit</a>
+                <a class="login-button" href="/certificates/<%= certificate.slug %>/delete">Delete</a><br/>
+                <a class="form-button" href="/profile">Back</a>
+            </div>
+        </div>
+    </article>
 
     <%- include('../includes/footer') %>
 </body>

@@ -4,24 +4,27 @@
 <body>
     <%- include('../includes/login-header') %>
 
-  <main>
-    <button>
-      <a href="/certificates/new">Register new certficate</a>
-    </button>
-    <p>Registered certificates:</p>
-    <ul>
-      <% certificates.forEach(certificate => { %>
-        <li>
-          <% if(certificate.isInStock) { %> 
-            <a href="/certificates/<%= certificate.slug %>"><%= certificate.name %>: <%= certificate.description %></a>
-          <% } else { %>
-            <%= certificate.name %> [NOT FOUND] 
-          <% } %>
-        </li>
-      <% }) %>
-    </ul>
-    <button><a href="/profile">Back</a></button>
-  </main>
+  <article>
+    <div class="article">
+      <div class="container">
+        <h2>My certificates</h2>
+        <ul class="news-list">
+          <% certificates.forEach(certificate => { %>
+            <li>
+              <% if(certificate.isInStock) { %> 
+                <h4><%= certificate.name %>: <%= certificate.description %></h4>
+                <a class="secondary" href="/certificates/<%= certificate.slug %>">Read more</a>
+              <% } else { %>
+                <%= certificate.name %> [NOT FOUND] 
+              <% } %>
+            </li>
+          <% }) %>
+        </ul>
+        <a class="cta-button" href="/certificates/new">Register new certficate</a><br/>
+        <a class="login-button" href="/profile">Back</a>
+      </div>
+    </div>
+  </article>
 
     <%- include('../includes/footer') %>
 </body>

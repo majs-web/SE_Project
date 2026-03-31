@@ -1,19 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
-    <%- include('../includes/head', {title: 'Edit Certificate | Webproject'}) %>
+    <%- include('../includes/login-head', {title: 'Edit Certificate | Webproject'}) %>
 <body>
     <%- include('../includes/header') %>
 
-  <main>
-    <h2>Edit certificate</h2>
-
-    <form action="/certificates/<%= certificate.slug %>" method="POST">
-      <input type="text" value="<%= certificate.name %>" name="name" placeholder="Name" /><br />
-      <input type="date" value="<%= certificate.date %>" name="date" placeholder="Date" /><br />
-      <input type="text" value="<%= certificate.description %>" name="description" placeholder="Description" /><br />
-      <button>Save</button>
-    </form>
-  </main>
+  <article>
+    <div class="article">
+      <div class="container">
+        <h2>Edit certificate</h2>
+        <section class="contact-form">
+          <form action="/certificates/<%= certificate.slug %>" method="POST">
+            <input type="text" value="<%= certificate.name %>" name="name" placeholder="Name" /><br />
+            <input type="date" value="<%= certificate.date %>" name="date" placeholder="Date" /><br />
+            <input type="text" value="<%= certificate.description %>" name="description" placeholder="Description" /><br />
+            <button class="form-button">Save</button>
+          </form>
+        </section> 
+        <a class="login-button" href="/certificates/<%= certificate.slug %>">Back</a>
+      </div>
+    </div>
+  </article>
 
     <%- include('../includes/footer') %>
 </body>

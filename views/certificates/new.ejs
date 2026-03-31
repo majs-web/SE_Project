@@ -6,17 +6,23 @@
         <%- include('../includes/login-header') %>
     </header>
 
-    <main>
-        <h2>Add new certificate</h2>
-        <form action="/certificates/new" method="POST">
-            <input type="text" name="name" placeholder="Name" required /><br />
-            <input type="date" name="date" placeholder="Date" required /><br />
-            <input type="text" name="description" placeholder="Description" required /><br />
-            <button>Save</button><br />
-        </form>
-        <button><a href="/profile">Back</a></button>
-        <button><a href="/certificates">See all certificates></a></button>
-    </main>
+    <article>
+        <div class="article">
+            <div class="container">
+                <h2>Add new certificate</h2>
+                <section class="contact-form">
+                    <form action="/certificates/new" method="POST">
+                        <input type="text" name="name" placeholder="Name" required /><br />
+                        <input type="date" name="date" placeholder="Date" required /><br />
+                        <input type="text" name="description" placeholder="Description" required /><br />
+                        <button class="form-button">Save</button><br />
+                    </form>
+                </section>
+                <a class="login-button" href="/profile">Back</a>
+                <a class="login-button" href="/certificates">See all certificates</a>
+            </div>
+        </div>
+    </article>
 
     <footer>
         <%- include('../includes/footer') %>
