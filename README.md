@@ -18,6 +18,22 @@ A web platform aimed to help farmers find and organize information about importa
     - Allows users to write a message, submit name, email, and phone nr. 
     - Logger function (middlewares/logger.js) ensures request from user is posted in server console.
 
+## Updatetd overview, third hand-in SE_19
+- Several features added:
+    - Signing up as a user (no password hashing or anything yet, just for demonstration purposes):
+        - Sign Up page: Allowing users to create profiles
+        - Login page: Allowing users to log in using their user data
+            - New .css file (login.css)
+            - .ejs templates: login-head.ejs, login-header.ejs
+            - Connected to MongoDB, using /models/users.js model
+    - Profile page: Select options to register new certificate, see list of all certificates, or read latest news
+    - Certificates:
+        - Register new certificates
+        - See list of all certificates
+            - Connected to MongoDB Community Edition
+            - Users can create, read, update and delete records (CRUD)
+
+
 ## How to run
 1. Ensure you have Node.js installed --> node -v
 2. Initialize npm --> npm init
@@ -28,12 +44,10 @@ A web platform aimed to help farmers find and organize information about importa
     - To stop server --> ctrl + c
 5. Install EJS templating engine --> npm install ejs
 6. Install mongoose --> npm install mongoose
-7. Install express-session for login
+7. Install express-session --> npm install express-session 
 
 ## Features (goal down the line)
-- Users can register and login
 - Personalized dashboard to store relevant files, deadlines
-- Connected to a database with news, certificates and regulations
 
 ## Author
 Developed by Maja Lie for SE modules SE_01, SE_19, SE_14, SE_10.
