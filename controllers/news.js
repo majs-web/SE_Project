@@ -3,6 +3,7 @@ import { Router, urlencoded } from 'express';
 
 // Import mock articles
 import { newsArticles } from '../data/news.js';  
+import { isLoggedIn } from '../middlewares/isLoggedIn.js';
 
 const router = Router();
 
@@ -17,7 +18,6 @@ router.get('/news', async (request, response) => {
 // Express renders article.ejs with the correct article 
 router.get('/news/:slug', async (request, response) => {
     const article = newsArticles.find(a => a.slug === request.params.slug);
-
     response.render('article', { article });
 })
 
