@@ -6,7 +6,7 @@
         <%- include('includes/header') %>
     </header>
 
-    <main>
+    <section class="container">
         <ul class="news-list">
             <h2>Our current articles</h2>
             <% articles.forEach(article => { %>
@@ -14,11 +14,11 @@
                     <h3><a href="/news/<%= article.slug %>"><%= article.title %></a></h3>
                     <p><em><%= new Date(article.date).toLocaleDateString() %></em></p>
                     <p><%= article.summary %></p>
-                    <a href="/news/<%= article.slug %>">Read more -></a>
+                    <a class="cta-button" href="/news/<%= article.slug %>">Read more</a>
                 </li>
             <% }) %>
         </ul>
-    </main>
+    </section>
 
     <footer>
         <%- include('includes/footer') %>
