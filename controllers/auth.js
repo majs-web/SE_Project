@@ -10,6 +10,7 @@ router.get('/login', (request, response) => {
 });
 
 // POST login
+// NB: Used ChatGPT to figure out how to create this route
 router.post('/login', async (request, response) => {
     const { username, password } = request.body;
     const user = await User.findOne({ username });
@@ -17,7 +18,6 @@ router.post('/login', async (request, response) => {
     if (!user || user.password !== password) {
         return response.render('login', { error: 'Wrong username or password.' });
     }
-
     request.session.username = user.username;
     response.redirect('/profile');
 })
