@@ -4,18 +4,20 @@
 <body>
     <%- include('includes/login-header') %>
     <main>
-        <h2>Welcome, <%= username %>!</h2><br />
+        <section class="container">
+            <h2>Welcome, <%= username %>!</h2><br />
 
-        <h4>What would you like to do?</h4>
+            <h4>What would you like to do?</h4>
 
-        <section class="profile-selection">
-            <button><a href="/certificates/new">Register new certificate</a></button>
-            <button><a href="/certificates">All certificates</a></button>
-            <button><a href="/news">News</a></button>
-            <button><a href="#">See my blog</a></button>
+            <section class="profile-selection">
+                <a class="form-button" href="/certificates/new">Register new certificate</a>
+                <a class="form-button" href="/certificates">All certificates</a>
+                <a class="form-button" href="/news">News</a>
+                <a class="form-button" href="#">See my blog</a>
+            </section>
+
+            <a class="login-button" href="/logout">Log out</a>
         </section>
-
-        <a href="/logout">Logout</a>
     </main>
 
     <%- include('includes/footer') %>
