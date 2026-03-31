@@ -1,3 +1,5 @@
+
+// Not yet in use, still using the mock database
 import mongoose from 'mongoose';
 
 const articleSchema = new mongoose.Schema({
