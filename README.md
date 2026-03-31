@@ -18,7 +18,7 @@ A web platform aimed to help farmers find and organize information about importa
     - Allows users to write a message, submit name, email, and phone nr. 
     - Logger function (middlewares/logger.js) ensures request from user is posted in server console.
 
-## Updatetd overview, third hand-in SE_19
+## Updated overview, third hand-in SE_19
 - Several features added:
     - Signing up as a user (no password hashing or anything yet, just for demonstration purposes):
         - Sign Up page: Allowing users to create profiles
